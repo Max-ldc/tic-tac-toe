@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body, html{
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.jeu{
+    display: grid;
+    grid-template-columns: repeat(3, fr);
+    grid-template-areas: 
+        "a b c"
+        "d e f"
+        "g h i";
+}
+
+.case{
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid black;
+}
+
+.cross{
+    font-size: 50px;
+    position: relative;
+    top: -2px;
+}
+
+button{
+    text-transform: uppercase;
+
+}
+
+/* Grid area sur chaque case : */
+
+.c1{
+    grid-area: a;
+}
+
+.c2{
+    grid-area: b;
+}
+
+.c3{
+    grid-area: c;
+}
+
+.c4{
+    grid-area: d;
+}
+
+.c5{
+    grid-area: e;
+}
+
+.c6{
+    grid-area: f;
+}
+
+.c7{
+    grid-area: g;
+}
+
+.c8{
+    grid-area: h;
+}
+
+.c9{
+    grid-area: i;
+}
