@@ -72,3 +72,13 @@ function checkWin(x){
 }
 
 newGame();
+
+// WIN CONDITIONS =
+// Ligne 1 : 1,2,3 : [1,1,1,x,x,x,x,x,x]
+// Ligne 2 : 4,5,6 : [x,x,x,1,1,1,x,x,x]
+// Ligne 3 : 7,8,9 : [x,x,x,x,x,x,1,1,1]
+// Colonne 1 : 1,4,7 : [1,x,x,1,x,x,1,x,x]
+// Colonne 2 : 2,5,8 : [x,1,x,x,1,x,x,1,x]
+// Colonne 3 : 3,6,9 : [x,x,1,x,x,1,x,x,1]
+// Diagonale 1 : 1,5,9 : [1,x,x,x,1,x,x,x,1]
+// Diagonale 2 : 3,5,7 : [x,x,1,x,1,x,1,x,x]
