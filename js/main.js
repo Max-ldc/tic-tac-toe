@@ -1,9 +1,9 @@
 var jeu = document.querySelector(".jeu");
 let joueur = false;
-let circlesTable = [0,0,0,0,0,0,0,0,0];
-let crossesTable = [0,0,0,0,0,0,0,0,0];
+let circlesTable = [];
+let crossesTable = [];
 
-function newGame(){
+function newGameMulti(){
     let nbrCaseRemplie = 0;
     circlesTable = [0,0,0,0,0,0,0,0,0];
     crossesTable = [0,0,0,0,0,0,0,0,0];
@@ -52,26 +52,50 @@ function checkWin(x){
         for (i=0;i<7;i=i+3){            // On test les lignes : 0/1/2 | 3/4/5 | 6/7/8
             // test pour les ronds
             if( circlesTable[i] && circlesTable[i+1] && circlesTable[i+2] ){
-                let cases = document.querySelectorAll(".case")
-                let t = [i,i+1,i+2];    // on récupère les 3 indices de cases en question
-                t.forEach((e) => {      // pour les 3 cases de win, on les colore en darkred
-                    cases[e].style = "background-color : darkred";
-                })
+                colorThreeCases(i,i+1,i+2);
                 console.log("Les ronds win !")
             // test pour les croix
             }else if( crossesTable[i] && crossesTable[i+1] && crossesTable[i+2] ){
-                let cases = document.querySelectorAll(".case")
-                let t = [i,i+1,i+2];    // on récupère les 3 indices de cases en question
-                t.forEach((e) => {      // pour les 3 cases de win, on les colore en darkred
-                    cases[e].style = "background-color : darkred";
-                })
+                colorThreeCases(i,i+1,i+2);
                 console.log("Les croix win !");
             }
+        }
+        for (i=0;i<4;i++){              // on test les colonnes 1/4/7 | 2/5/8 | 3/6/9
+            // test pour les ronds
+            if ( circlesTable[i] && circlesTable[i+3] && circlesTable[i+6] ){
+                colorThreeCases(i,i+3,i+6);
+                console.log("Les ronds win !");
+            // test pour les croix
+            }else if ( crossesTable[i] && crossesTable[i+3] && crossesTable[i+6] ){
+                colorThreeCases(i,i+3,i+6);
+                console.log("Les croix win !");
+            }
+        }
+        if( circlesTable[0] && circlesTable[4] && circlesTable[8] ){
+            colorThreeCases(0,4,8);
+            console.log("Les ronds win !");
+        }else if( circlesTable[2] && circlesTable[4] && circlesTable[6] ){
+            colorThreeCases(2,4,6);
+            console.log("Les ronds win !");
+        }else if( crossesTable[0] && crossesTable[4] && crossesTable[8] ){
+            colorThreeCases(0,4,8);
+            console.log("Les croix win !");
+        }else if( crossesTable[2] && crossesTable[4] && crossesTable[6] ){
+            colorThreeCases(2,4,6);
+            console.log("Les croix win !");
         }
     }
 }
 
-newGame();
+function colorThreeCases(a,b,c){
+    let cases = document.querySelectorAll(".case")
+                let t = [a,b,c];    // on récupère les 3 indices de cases en question
+                t.forEach((e) => {      // pour les 3 cases de win, on les colore en darkred
+                    cases[e].style = "background-color : darkred";
+                })
+}
+
+newGameMulti();
 
 // WIN CONDITIONS =
 // Ligne 1 : 1,2,3 : [1,1,1,x,x,x,x,x,x]
