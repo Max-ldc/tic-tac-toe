@@ -51,7 +51,7 @@ button{
 
 .modal{
     position: absolute;
-    top: 36vh;
+    top: 45vh;
     width: 250px;
     height: 250px;
     background-color: rgba(255,228,196,0.7);
@@ -62,4 +62,12 @@ button{
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
+}
+
+.infoPlayer{
+    padding: 1vh;
+    border-radius: 5px;
+    box-shadow: 0 0 35px rgba(0,0,0,0.2);
+    background-color: rgba(45, 181, 167, 0.6);
+    font-size: 1.3rem;
 }
