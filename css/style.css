@@ -47,6 +47,14 @@ body{
 
 button{
     text-transform: uppercase;
+    cursor: pointer;
+
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .modal{

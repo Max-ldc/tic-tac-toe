@@ -141,6 +141,53 @@ function changeModal(c){
     }
 }
 
+function newGameSolo(){
+    let joueur = true;
+    modal.style = "display : none"; // on enlève la modal en début de partie
+    let nbrCaseRemplie = 0;         // on passe le compteur de cases remplies à 0
+    circlesTable = [0,0,0,0,0,0,0,0,0]; // aucun cercle donc toutes les pos à 0
+    crossesTable = [0,0,0,0,0,0,0,0,0]; // pareil pour les croix
+    
+    let cases = document.querySelectorAll(".case"); // Au reset : on prend toutes les cases et on les supprime
+    cases.forEach((e) => {
+        e.remove();
+    })
+
+    for (i=0; i<9; i++){               // création des 9 cases
+        let caseRemplie = false;            // la case n'est pas remplie de base
+        let addCase = document.createElement("div");
+        let position = i;                 // position dans les tableaux des cercles/croix
+        addCase.className = "case";   // classes c1, c2 etc pour grid area
+        addCase.onclick = (e) => {
+            if (caseRemplie == false){      // si la case n'est pas remplie, on créé un signe :
+                let addSign = document.createElement("span");
+                if (joueur == true){        // Si c'est au tour du joueur
+                    addSign.className = "sign circle";  // on crée un cercle
+                    circlesTable[position] = 1;         // on le place dans le tableau des cercles
+                }
+                addSign.style = "cursor:auto";  // on enlève le pointer
+                caseRemplie = true;             // la case passe en remplie, on ne pourra rien ajouter
+                addCase.appendChild(addSign);   // On ajoute le signe à la case
+                compTurn(circlesTable, crossesTable, addCase);
+                // !!!! faire une fonction pour faire jouer l'ordi ici ?
+                nbrCaseRemplie++;               // On compte le nombre de cases remplies pour arrêter le jeu (à faire)
+                if (nbrCaseRemplie < 9){    // Doit-on continuer le jeu en cas de non-victoire ?
+                    checkWin(true);             // si moins de 9 cases remplies, oui
+                }else{
+                    checkWin(false);            // Si 9 cases remplies, non
+                }
+            }
+        }
+    jeu.appendChild(addCase);               // On ajoute la case au jeu
+    }
+}
+
+function compTurn(to, tx, addc){
+    console.table(to);
+    console.table(tx);
+    console.log(addc);
+}
+
 newGameMulti();
 
 // WIN CONDITIONS =
